@@ -27,13 +27,13 @@ function Edit() {
   const items = useSelector((state :any) => state.data.items);
   const { id } = useParams();
   const [item, setItem] = useState({
-    id: 0,
+    id: "",
     name: "",
     description: "",
     watchers_count: 0,
     language: "",
     open_issues: 0,
-    private: null,  
+    private: "0",  
   });
   const currentItem = items.find(
     (item) => item.id == parseInt(id)
@@ -61,7 +61,7 @@ function Edit() {
         <Grid container>
           <Grid item xs={12}>
             <Item>
-              <Typography sx={{ width: "90%", margin: "0 auto" }} noWrap>
+              <Typography sx={{ width: "90%", margin: "0 auto" }} noWrap component={'span'}>
                 {" "}
                 <h2>Edit Item</h2>{" "}
               </Typography>
@@ -69,7 +69,7 @@ function Edit() {
           </Grid>
         </Grid>
         {/* group  */}
-        <Grid sx={{ width: "90%", margin: "0 auto" }} container spacing={1}>
+        <Grid sx={{ width: "90%", margin: "0 auto" }} container columnSpacing={1}>
           <Grid item xs={6}>
             {/* ID  */}
             <Item>
@@ -86,14 +86,14 @@ function Edit() {
                   type="number"
                   label="ID"
                   variant="outlined"
-                  value={item.id}
+                  value={item?.id}
                   disabled
                   onChange={handleChange}
                 />
               </Box>
             </Item>
           </Grid>
-          <Grid item xs={6} spacing={1}>
+          <Grid item xs={6} columnSpacing={1}>
             {/* Name  */}
             <Item>
               <Box
@@ -107,7 +107,7 @@ function Edit() {
                   id="outlined-basic"
                   name="name"
                   label="Name"
-                  value={item.name}
+                  value={item?.name}
                   variant="outlined"
                   onChange={handleChange}
                 />
@@ -117,7 +117,7 @@ function Edit() {
         </Grid>
         {/* end-group  */}
         {/* group  */}
-        <Grid sx={{ width: "90%", margin: "0 auto" }} container spacing={1}>
+        <Grid sx={{ width: "90%", margin: "0 auto" }} container columnSpacing={1}>
           <Grid item xs={12}>
             {/* Desciption  */}
             <Item>
@@ -133,7 +133,7 @@ function Edit() {
                   name="description"
                   label="Desciption"
                   placeholder="Enter Desciption"
-                  value={item.description}
+                  value={item?.description}
                   onChange={handleChange}
                   multiline
                 />
@@ -143,7 +143,7 @@ function Edit() {
         </Grid>
         {/* end-group  */}
         {/* group  */}
-        <Grid sx={{ width: "90%", margin: "0 auto" }} container spacing={1}>
+        <Grid sx={{ width: "90%", margin: "0 auto" }} container columnSpacing={1}>
           <Grid item xs={6}>
             {/* Watchers Count  */}
             <Item>
@@ -158,14 +158,14 @@ function Edit() {
                   id="outlined-basic"
                   name="watchers_count"
                   label="Watchers Count"
-                  value={item.watchers_count}
+                  value={item?.watchers_count}
                   variant="outlined"
                   onChange={handleChange}
                 />
               </Box>
             </Item>
           </Grid>
-          <Grid item xs={6} spacing={1}>
+          <Grid item xs={6} columnSpacing={1}>
             {/* Language  */}
             <Item>
               <Box
@@ -179,7 +179,7 @@ function Edit() {
                   id="outlined-basic"
                   name="language"
                   label="Language"
-                  value={item.language}
+                  value={item?.language}
                   variant="outlined"
                   onChange={handleChange}
                 />
@@ -189,7 +189,7 @@ function Edit() {
         </Grid>
         {/* end-group  */}
         {/* group  */}
-        <Grid sx={{ width: "90%", margin: "0 auto" }} container spacing={1}>
+        <Grid sx={{ width: "90%", margin: "0 auto" }} container columnSpacing={1}>
           <Grid item xs={6}>
             {/* Open Issues  */}
             <Item>
@@ -204,14 +204,14 @@ function Edit() {
                   id="outlined-basic"
                   name="open_issues"
                   label="Open Issues"
-                  value={item.open_issues}
+                  value={item?.open_issues}
                   variant="outlined"
                   onChange={handleChange}
                 />
               </Box>
             </Item>
           </Grid>
-          <Grid item xs={6} spacing={1}>
+          <Grid item xs={6} columnSpacing={1}>
             {/* Private  */}
             <Item>
               <Box
@@ -227,7 +227,7 @@ function Edit() {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     name="private"
-                    value={item.private}
+                    value={item?.private}
                     label="Private"
                     onChange={handleChange}>
                     <MenuItem value={1}>True</MenuItem>
@@ -240,14 +240,14 @@ function Edit() {
         </Grid>
         {/* end-group  */}
 
-        <Grid sx={{ width: "50%", margin: "0 auto" }} container spacing={1}>
+        <Grid sx={{ width: "50%", margin: "0 auto" }} container columnSpacing={1}>
           <Grid item xs={4}></Grid>
           <Grid item xs={2}>
             <Item sx={{ padding: "0"}}>
               <Button variant="contained"
               size="large" 
               onClick={() => handleSubmit()}
-              disabled={!item.id || !item.name  ? true : false} 
+              disabled={!item?.id || !item?.name  ? true : false} 
               >
                 Update
               </Button>
